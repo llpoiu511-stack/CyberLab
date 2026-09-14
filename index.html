@@ -1,69 +1,531 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CyberLab</title>
-<style>
-body{margin:0;background:#01040a;color:#fff;font-family:sans-serif;display:flex;justify-content:center;align-items:center;height:100vh}
-.box{width:92%;max-width:380px;background:#0c1c3a;border:1px solid #d4af37;border-radius:20px;padding:30px;text-align:center}
-input{width:100%;padding:14px;border-radius:30px;border:1px solid #2a5a8a;background:#000e1f;color:#fff;text-align:center;font-size:18px;letter-spacing:2px;margin-top:15px}
-button{width:100%;padding:14px;margin-top:15px;border-radius:30px;border:none;background:gold;color:#000;font-weight:bold;font-size:17px;cursor:pointer}
-#err{color:#ff5c5c;margin-top:10px;display:none}
-#ok{color:#5cffb0;margin-top:10px;display:none}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b12">
+  <title>CyberLab AI | الذكاء الاصطناعي</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #070b12;
+      color: #e8eef7;
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 7%;
+      background: rgba(7, 11, 18, 0.96);
+      border-bottom: 1px solid #1c2a3d;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      color: #42f5a7;
+    }
+
+    .logo span {
+      color: #e8eef7;
+    }
+
+    nav a {
+      color: #b8c4d4;
+      text-decoration: none;
+      margin-right: 20px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #42f5a7;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 35px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #1c2a3d;
+      border-radius: 30px;
+      color: #42f5a7;
+      background: #0b111c;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 7vw, 65px);
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #42f5a7;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: #9eacbd;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .chat-section {
+      width: min(900px, 92%);
+      margin: 30px auto 70px;
+    }
+
+    .chat-box {
+      background: #0b111c;
+      border: 1px solid #1c2a3d;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .chat-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #1c2a3d;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ai-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #42f5a7;
+      color: #070b12;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .status {
+      color: #42f5a7;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .messages {
+      height: 430px;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .message {
+      max-width: 82%;
+      padding: 13px 16px;
+      margin-bottom: 15px;
+      border-radius: 16px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .ai-message {
+      background: #111a28;
+      border: 1px solid #1c2a3d;
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .user-message {
+      background: #42f5a7;
+      color: #07110c;
+      margin-right: auto;
+      margin-left: 0;
+      font-weight: 600;
+    }
+
+    .input-area {
+      padding: 15px;
+      border-top: 1px solid #1c2a3d;
+      display: flex;
+      gap: 10px;
+    }
+
+    #userInput {
+      flex: 1;
+      resize: none;
+      min-height: 52px;
+      max-height: 130px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #1c2a3d;
+      outline: none;
+      background: #070b12;
+      color: white;
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    #userInput:focus {
+      border-color: #42f5a7;
+    }
+
+    #sendBtn {
+      width: 58px;
+      border: none;
+      border-radius: 14px;
+      background: #42f5a7;
+      color: #06100b;
+      cursor: pointer;
+      font-size: 21px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    #sendBtn:hover {
+      transform: scale(1.04);
+    }
+
+    .tools {
+      width: min(1000px, 92%);
+      margin: 0 auto 80px;
+    }
+
+    .tools h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .card {
+      background: #0b111c;
+      border: 1px solid #1c2a3d;
+      padding: 25px;
+      border-radius: 17px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #42f5a7;
+    }
+
+    .card .icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #9eacbd;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid #1c2a3d;
+      padding: 25px;
+      color: #7f8da0;
+    }
+
+    .typing {
+      color: #42f5a7;
+      font-size: 14px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .messages {
+        height: 390px;
+      }
+
+      .message {
+        max-width: 90%;
+      }
+
+      .input-area {
+        align-items: stretch;
+      }
+
+      #sendBtn {
+        width: 55px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="box">
-<h2 style="color:gold">CyberLab</h2>
-<p style="font-size:11px;letter-spacing:4px;color:#7ec8ff">PREMIUM CYBERSECURITY LAB</p>
-<input type="text" id="p" inputmode="numeric" placeholder="899299292" autocomplete="off">
-<button onclick="check()">دخول المختبر 🔓</button>
-<div id="err"></div>
-<div id="ok">✅ صحيح - جاري الدخول...</div>
-<p style="margin-top:15px;font-size:11px;opacity:0.5">اكتب: 899299292</p>
-</div>
-<script>
-function toEnglishNumbers(str){
-  return str.replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/\s/g,'').trim();
-}
-function check(){
-  let raw = document.getElementById('p').value;
-  let cleaned = toEnglishNumbers(raw);
-  console.log("كتبت:", raw, "بعد التنظيف:", cleaned);
-  if(cleaned === "899299292"){
-    document.getElementById('ok').style.display='block';
-    document.getElementById('err').style.display='none';
-    setTimeout(()=>{
-      document.body.innerHTML = `
-      <div style="padding:12px;max-width:1200px;margin:auto;width:100%;color:#d4f0ff">
-        <div style="border:1px solid #1e3a5f;border-radius:16px;padding:16px;background:#0a1a2e;display:flex;justify-content:space-between"><b>لوحة التحكم السيبرانية</b><span style="color:#5cffb0">● متصل</span></div>
-        <div style="display:grid;grid-template-columns:260px 1fr;gap:12px;margin-top:12px">
-          <div style="border:1px solid #1e3a5f;border-radius:16px;padding:12px;background:#0a1a2e">
-            <div style="padding:12px;background:#0f2747;border:1px solid #00bfff;border-radius:10px;color:#fff">🛡️ الرئيسية</div>
-            <div style="padding:12px;margin-top:6px;background:#0f2747;border-radius:10px">🎯 فحص الثغرات</div>
-            <div style="padding:12px;margin-top:6px;background:#0f2747;border-radius:10px">🌐 تحليل الشبكة</div>
-          </div>
-          <div style="border:1px solid #1e3a5f;border-radius:16px;padding:20px;background:#0a1a2e;text-align:center">
-            <h2 style="color:#d6efff">أدوات الاختراق الأخلاقي</h2>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px">
-              <div style="border:1px solid #2a5a8a;padding:15px;border-radius:12px"><div>التهديدات</div><div style="font-size:36px;color:#8dd8ff">12</div></div>
-              <div style="border:1px solid #2a5a8a;padding:15px;border-radius:12px"><div>الفحوصات</div><div style="font-size:36px;color:#8dd8ff">03</div></div>
-              <div style="border:1px solid #2a5a8a;padding:15px;border-radius:12px"><div>الحماية</div><div style="font-size:36px;color:#8dd8ff">98%</div></div>
-            </div>
-            <p style="margin-top:20px;color:#5cffb0">✅ تم الدخول بنجاح - هذه هي النسخة الكاملة بعد التأكد من كلمة السر</p>
-          </div>
+
+<header>
+  <div class="nav">
+    <div class="logo">CyberLab <span>AI</span></div>
+
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#chat">المساعد</a>
+      <a href="#tools">الأدوات</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div class="badge">🤖 CyberLab AI</div>
+
+    <h1>
+      مرحبًا بك في
+      <span>CyberLab AI</span>
+    </h1>
+
+    <p>
+      مساعدك الذكي للبرمجة، الأمن السيبراني، التعلم،
+      تحليل الأفكار وكتابة الأكواد.
+    </p>
+  </section>
+
+  <section class="chat-section" id="chat">
+
+    <div class="chat-box">
+
+      <div class="chat-header">
+        <div class="ai-icon">AI</div>
+
+        <div>
+          <strong>CyberLab AI</strong>
+          <div class="status">● متصل</div>
         </div>
-      </div>`;
-    },800);
-  }else{
-    let e = document.getElementById('err');
-    e.style.display='block';
-    e.innerHTML = `❌ خطأ - أنت كتبت: "${raw}" <br> الصحيح هو: 899299292 <br> <small>تأكد أنك تكتب بالإنجليزي بدون مسافات</small>`;
-    document.getElementById('ok').style.display='none';
+      </div>
+
+      <div class="messages" id="messages">
+
+        <div class="message ai-message">
+          👋 مرحبًا! أنا CyberLab AI.
+
+          كيف يمكنني مساعدتك اليوم؟
+
+          يمكنك أن تسألني عن البرمجة أو HTML أو CSS أو JavaScript أو الأمن السيبراني أو أي موضوع آخر.
+        </div>
+
+        <div class="typing" id="typing">
+          CyberLab AI يكتب...
+        </div>
+
+      </div>
+
+      <div class="input-area">
+
+        <textarea
+          id="userInput"
+          placeholder="اكتب رسالتك هنا..."
+          rows="1"></textarea>
+
+        <button id="sendBtn" title="إرسال">➤</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="tools" id="tools">
+
+    <h2>🧰 أدوات CyberLab AI</h2>
+
+    <div class="cards">
+
+      <div class="card" onclick="useTool('اكتب لي كود HTML لصفحة ويب حديثة')">
+        <div class="icon">💻</div>
+        <h3>مساعد البرمجة</h3>
+        <p>ساعدني في كتابة وفهم وتطوير الأكواد.</p>
+      </div>
+
+      <div class="card" onclick="useTool('اشرح لي أساسيات الأمن السيبراني')">
+        <div class="icon">🛡️</div>
+        <h3>الأمن السيبراني</h3>
+        <p>تعلم مفاهيم الأمن السيبراني بطريقة مبسطة وآمنة.</p>
+      </div>
+
+      <div class="card" onclick="useTool('لخص لي مفهوم الذكاء الاصطناعي بطريقة سهلة')">
+        <div class="icon">🧠</div>
+        <h3>التعلم الذكي</h3>
+        <p>احصل على شرح مبسط للمفاهيم والمواضيع المختلفة.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 CyberLab AI — جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+
+  const input = document.getElementById("userInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const messages = document.getElementById("messages");
+  const typing = document.getElementById("typing");
+
+  function addMessage(text, type) {
+
+    const message = document.createElement("div");
+
+    message.className =
+      "message " +
+      (type === "user" ? "user-message" : "ai-message");
+
+    message.textContent = text;
+
+    messages.insertBefore(message, typing);
+
+    messages.scrollTop = messages.scrollHeight;
   }
-}
-document.getElementById('p').addEventListener('keypress',e=>{if(e.key==='Enter')check()});
+
+  function getAIResponse(text) {
+
+    const lower = text.toLowerCase();
+
+    if (
+      lower.includes("مرحبا") ||
+      lower.includes("السلام") ||
+      lower.includes("اهلا")
+    ) {
+      return "أهلًا بك 👋\nأنا CyberLab AI، كيف يمكنني مساعدتك؟";
+    }
+
+    if (
+      lower.includes("html") ||
+      lower.includes("برمجة")
+    ) {
+      return "بالتأكيد 💻\nأستطيع مساعدتك في HTML وCSS وJavaScript وشرح الأكواد خطوة بخطوة.";
+    }
+
+    if (
+      lower.includes("أمن") ||
+      lower.includes("سيبراني") ||
+      lower.includes("cyber")
+    ) {
+      return "🛡️ يمكنني شرح مفاهيم الأمن السيبراني، حماية المواقع، اختبار الأمان بشكل قانوني، وأساسيات الشبكات.";
+    }
+
+    if (
+      lower.includes("ذكاء اصطناعي") ||
+      lower.includes("ai")
+    ) {
+      return "🧠 الذكاء الاصطناعي هو مجال يتيح للبرامج تنفيذ مهام تتطلب عادةً قدرًا من الذكاء البشري، مثل فهم اللغة وتحليل البيانات وتوليد النصوص.";
+    }
+
+    if (
+      lower.includes("كود")
+    ) {
+      return "💻 أرسل لي الكود أو أخبرني بما تريد بناءه، وسأساعدك في تصميمه وشرحه.";
+    }
+
+    return "🤖 وصلتني رسالتك:\n\n\"" +
+      text +
+      "\"\n\nهذه نسخة تجريبية من CyberLab AI. يمكننا الآن ربطها بواجهة API للذكاء الاصطناعي حتى تحصل على إجابات حقيقية ومتقدمة.";
+  }
+
+  function sendMessage() {
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    addMessage(text, "user");
+
+    input.value = "";
+
+    typing.style.display = "block";
+
+    messages.scrollTop = messages.scrollHeight;
+
+    setTimeout(() => {
+
+      typing.style.display = "none";
+
+      const response = getAIResponse(text);
+
+      addMessage(response, "ai");
+
+    }, 700);
+  }
+
+  function useTool(text) {
+
+    input.value = text;
+
+    input.focus();
+
+    document
+      .getElementById("chat")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+
+  input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter" && !event.shiftKey) {
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  });
+
 </script>
+
 </body>
 </html>

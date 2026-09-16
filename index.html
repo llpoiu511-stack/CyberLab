@@ -1,531 +1,784 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070b12">
-  <title>CyberLab AI | الذكاء الاصطناعي</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    html {
-      scroll-behavior: smooth;
-    }
+<title>SyriaNumbers</title>
 
-    body {
-      font-family: Arial, Tahoma, sans-serif;
-      background: #070b12;
-      color: #e8eef7;
-      min-height: 100vh;
-    }
+<style>
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 16px 7%;
-      background: rgba(7, 11, 18, 0.96);
-      border-bottom: 1px solid #1c2a3d;
-      backdrop-filter: blur(12px);
-    }
+*{
+box-sizing:border-box;
+font-family:Arial,Tajawal,sans-serif;
+}
 
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
+body{
+margin:0;
+background:#050505;
+color:white;
+min-height:100vh;
+}
 
-    .logo {
-      font-size: 23px;
-      font-weight: bold;
-      color: #42f5a7;
-    }
 
-    .logo span {
-      color: #e8eef7;
-    }
+.login{
 
-    nav a {
-      color: #b8c4d4;
-      text-decoration: none;
-      margin-right: 20px;
-      transition: 0.3s;
-    }
+position:fixed;
+width:100%;
+height:100vh;
+background:#050505;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:9999;
 
-    nav a:hover {
-      color: #42f5a7;
-    }
+}
 
-    .hero {
-      text-align: center;
-      padding: 70px 20px 35px;
-    }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #1c2a3d;
-      border-radius: 30px;
-      color: #42f5a7;
-      background: #0b111c;
-      margin-bottom: 20px;
-    }
+.login h1{
 
-    .hero h1 {
-      font-size: clamp(35px, 7vw, 65px);
-      margin-bottom: 15px;
-    }
+font-size:45px;
+color:#00e5ff;
+text-shadow:0 0 25px #00e5ff;
 
-    .hero h1 span {
-      color: #42f5a7;
-    }
+}
 
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: #9eacbd;
-      font-size: 18px;
-      line-height: 1.8;
-    }
 
-    .chat-section {
-      width: min(900px, 92%);
-      margin: 30px auto 70px;
-    }
+.login input{
 
-    .chat-box {
-      background: #0b111c;
-      border: 1px solid #1c2a3d;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
+width:300px;
+padding:15px;
+margin:8px;
+background:#111;
+border:1px solid #333;
+border-radius:15px;
+color:white;
+font-size:17px;
 
-    .chat-header {
-      padding: 18px 20px;
-      border-bottom: 1px solid #1c2a3d;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+}
 
-    .ai-icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #42f5a7;
-      color: #070b12;
-      font-size: 21px;
-      font-weight: bold;
-    }
 
-    .status {
-      color: #42f5a7;
-      font-size: 13px;
-      margin-top: 4px;
-    }
+button{
 
-    .messages {
-      height: 430px;
-      overflow-y: auto;
-      padding: 20px;
-    }
+width:100%;
+padding:16px;
+border-radius:18px;
+border:1px solid #333;
+background:#181818;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
 
-    .message {
-      max-width: 82%;
-      padding: 13px 16px;
-      margin-bottom: 15px;
-      border-radius: 16px;
-      line-height: 1.7;
-      white-space: pre-wrap;
-    }
+}
 
-    .ai-message {
-      background: #111a28;
-      border: 1px solid #1c2a3d;
-      margin-left: auto;
-      margin-right: 0;
-    }
 
-    .user-message {
-      background: #42f5a7;
-      color: #07110c;
-      margin-right: auto;
-      margin-left: 0;
-      font-weight: 600;
-    }
+button:hover{
 
-    .input-area {
-      padding: 15px;
-      border-top: 1px solid #1c2a3d;
-      display: flex;
-      gap: 10px;
-    }
+background:#00e5ff;
+color:black;
 
-    #userInput {
-      flex: 1;
-      resize: none;
-      min-height: 52px;
-      max-height: 130px;
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid #1c2a3d;
-      outline: none;
-      background: #070b12;
-      color: white;
-      font-size: 16px;
-      font-family: inherit;
-    }
+}
 
-    #userInput:focus {
-      border-color: #42f5a7;
-    }
 
-    #sendBtn {
-      width: 58px;
-      border: none;
-      border-radius: 14px;
-      background: #42f5a7;
-      color: #06100b;
-      cursor: pointer;
-      font-size: 21px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
+.login button{
 
-    #sendBtn:hover {
-      transform: scale(1.04);
-    }
+width:300px;
+margin-top:10px;
+background:#00e5ff;
+color:black;
 
-    .tools {
-      width: min(1000px, 92%);
-      margin: 0 auto 80px;
-    }
+}
 
-    .tools h2 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
 
-    .card {
-      background: #0b111c;
-      border: 1px solid #1c2a3d;
-      padding: 25px;
-      border-radius: 17px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+header{
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #42f5a7;
-    }
+padding:35px;
+text-align:center;
+background:linear-gradient(135deg,#000,#111,#000);
 
-    .card .icon {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
+}
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
 
-    .card p {
-      color: #9eacbd;
-      line-height: 1.6;
-      font-size: 14px;
-    }
+.logo{
 
-    footer {
-      text-align: center;
-      border-top: 1px solid #1c2a3d;
-      padding: 25px;
-      color: #7f8da0;
-    }
+font-size:42px;
+color:#00e5ff;
+text-shadow:0 0 20px #00e5ff;
 
-    .typing {
-      color: #42f5a7;
-      font-size: 14px;
-      margin-bottom: 15px;
-      display: none;
-    }
+}
 
-    @media (max-width: 700px) {
-      nav {
-        display: none;
-      }
 
-      .hero {
-        padding-top: 45px;
-      }
+.subtitle{
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+color:#aaa;
 
-      .messages {
-        height: 390px;
-      }
+}
 
-      .message {
-        max-width: 90%;
-      }
 
-      .input-area {
-        align-items: stretch;
-      }
+.container{
 
-      #sendBtn {
-        width: 55px;
-      }
-    }
-  </style>
+max-width:900px;
+margin:auto;
+padding:20px;
+
+}
+
+
+.box{
+
+background:#101010;
+border:1px solid #222;
+border-radius:25px;
+padding:25px;
+margin-bottom:20px;
+
+}
+
+
+h2{
+
+text-align:center;
+color:#00e5ff;
+
+}
+
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+
+}
+
+
+.card{
+
+background:#080808;
+border:1px solid #333;
+border-radius:25px;
+padding:25px;
+text-align:center;
+
+}
+
+
+.number{
+
+font-size:32px;
+color:#00ff88;
+direction:ltr;
+
+}
+
+
+.code{
+
+font-size:35px;
+color:#ffd700;
+
+}
+
+
+.balance{
+
+text-align:center;
+color:#00ff88;
+font-size:22px;
+
+}
+
+
+.history{
+
+background:#151515;
+padding:15px;
+border-radius:15px;
+margin:10px;
+
+}
+
+
+.timer{
+
+font-size:40px;
+color:#ffcc00;
+
+}
+
+
+@media(max-width:600px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.logo{
+
+font-size:32px;
+
+}
+
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
+
+<div class="login" id="loginPage">
+
+<h1>
+📱 SyriaNumbers
+</h1>
+
+
+<input id="username" placeholder="اسم المستخدم">
+
+
+<input id="password" type="password" placeholder="كلمة المرور">
+
+
+<button onclick="register()">
+إنشاء حساب
+</button>
+
+
+<button onclick="login()">
+دخول
+</button>
+
+
+</div>
+
+
 <header>
-  <div class="nav">
-    <div class="logo">CyberLab <span>AI</span></div>
 
-    <nav>
-      <a href="#home">الرئيسية</a>
-      <a href="#chat">المساعد</a>
-      <a href="#tools">الأدوات</a>
-    </nav>
-  </div>
+<div class="logo">
+📱 SyriaNumbers
+</div>
+
+<div class="subtitle">
+منصة الأرقام التجريبية الذكية
+</div>
+
 </header>
+<div class="container">
 
-<main>
 
-  <section class="hero" id="home">
-    <div class="badge">🤖 CyberLab AI</div>
+<div class="box" id="serviceBox">
 
-    <h1>
-      مرحبًا بك في
-      <span>CyberLab AI</span>
-    </h1>
+<h2>اختر التطبيق</h2>
 
-    <p>
-      مساعدك الذكي للبرمجة، الأمن السيبراني، التعلم،
-      تحليل الأفكار وكتابة الأكواد.
-    </p>
-  </section>
+<div class="grid">
 
-  <section class="chat-section" id="chat">
+<button onclick="chooseService('واتساب')">
+📱 واتساب
+</button>
 
-    <div class="chat-box">
 
-      <div class="chat-header">
-        <div class="ai-icon">AI</div>
+<button onclick="chooseService('تيليجرام')">
+✈️ تيليجرام
+</button>
 
-        <div>
-          <strong>CyberLab AI</strong>
-          <div class="status">● متصل</div>
-        </div>
-      </div>
 
-      <div class="messages" id="messages">
+<button onclick="chooseService('فيسبوك')">
+📘 فيسبوك
+</button>
 
-        <div class="message ai-message">
-          👋 مرحبًا! أنا CyberLab AI.
 
-          كيف يمكنني مساعدتك اليوم؟
+<button onclick="chooseService('تويتر')">
+🐦 تويتر
+</button>
 
-          يمكنك أن تسألني عن البرمجة أو HTML أو CSS أو JavaScript أو الأمن السيبراني أو أي موضوع آخر.
-        </div>
+</div>
 
-        <div class="typing" id="typing">
-          CyberLab AI يكتب...
-        </div>
+</div>
 
-      </div>
 
-      <div class="input-area">
 
-        <textarea
-          id="userInput"
-          placeholder="اكتب رسالتك هنا..."
-          rows="1"></textarea>
 
-        <button id="sendBtn" title="إرسال">➤</button>
+<div class="box" id="countryBox" style="display:none">
 
-      </div>
+<h2>اختر الدولة</h2>
 
-    </div>
 
-  </section>
+<div class="grid">
 
-  <section class="tools" id="tools">
 
-    <h2>🧰 أدوات CyberLab AI</h2>
+<button onclick="createNumber('🇺🇸 أمريكا')">
+🇺🇸 أمريكا
+</button>
 
-    <div class="cards">
 
-      <div class="card" onclick="useTool('اكتب لي كود HTML لصفحة ويب حديثة')">
-        <div class="icon">💻</div>
-        <h3>مساعد البرمجة</h3>
-        <p>ساعدني في كتابة وفهم وتطوير الأكواد.</p>
-      </div>
+<button onclick="createNumber('🇷🇺 روسيا')">
+🇷🇺 روسيا
+</button>
 
-      <div class="card" onclick="useTool('اشرح لي أساسيات الأمن السيبراني')">
-        <div class="icon">🛡️</div>
-        <h3>الأمن السيبراني</h3>
-        <p>تعلم مفاهيم الأمن السيبراني بطريقة مبسطة وآمنة.</p>
-      </div>
 
-      <div class="card" onclick="useTool('لخص لي مفهوم الذكاء الاصطناعي بطريقة سهلة')">
-        <div class="icon">🧠</div>
-        <h3>التعلم الذكي</h3>
-        <p>احصل على شرح مبسط للمفاهيم والمواضيع المختلفة.</p>
-      </div>
+<button onclick="createNumber('🇩🇪 ألمانيا')">
+🇩🇪 ألمانيا
+</button>
 
-    </div>
 
-  </section>
+<button onclick="createNumber('🇸🇦 السعودية')">
+🇸🇦 السعودية
+</button>
 
-</main>
 
-<footer>
-  <p>© 2026 CyberLab AI — جميع الحقوق محفوظة</p>
-</footer>
+<button onclick="createNumber('🇯🇴 الأردن')">
+🇯🇴 الأردن
+</button>
 
+
+<button onclick="createNumber('🇾🇪 اليمن')">
+🇾🇪 اليمن
+</button>
+
+
+<button onclick="createNumber('🇨🇳 الصين')">
+🇨🇳 الصين
+</button>
+
+
+<button onclick="createNumber('🇮🇳 الهند')">
+🇮🇳 الهند
+</button>
+
+
+<button onclick="createNumber('🇵🇰 باكستان')">
+🇵🇰 باكستان
+</button>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="box">
+
+<div class="balance">
+
+💰 الرصيد:
+<span id="balance">
+10
+</span>
+
+</div>
+
+</div>
+
+
+
+
+<div id="result"></div>
+
+
+
+
+
+<div class="box">
+
+<h2>
+📋 سجل الطلبات
+</h2>
+
+
+<div id="history">
+
+لا يوجد طلبات
+
+</div>
+
+
+</div>
+
+
+</div>
 <script>
 
-  const input = document.getElementById("userInput");
-  const sendBtn = document.getElementById("sendBtn");
-  const messages = document.getElementById("messages");
-  const typing = document.getElementById("typing");
+let currentUser="";
+let service="";
+let currentNumber="";
+let balance=10;
 
-  function addMessage(text, type) {
 
-    const message = document.createElement("div");
 
-    message.className =
-      "message " +
-      (type === "user" ? "user-message" : "ai-message");
+// إنشاء حساب
 
-    message.textContent = text;
+function register(){
 
-    messages.insertBefore(message, typing);
 
-    messages.scrollTop = messages.scrollHeight;
-  }
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
 
-  function getAIResponse(text) {
 
-    const lower = text.toLowerCase();
+if(user=="" || pass==""){
 
-    if (
-      lower.includes("مرحبا") ||
-      lower.includes("السلام") ||
-      lower.includes("اهلا")
-    ) {
-      return "أهلًا بك 👋\nأنا CyberLab AI، كيف يمكنني مساعدتك؟";
-    }
+alert("أدخل اسم المستخدم وكلمة المرور");
 
-    if (
-      lower.includes("html") ||
-      lower.includes("برمجة")
-    ) {
-      return "بالتأكيد 💻\nأستطيع مساعدتك في HTML وCSS وJavaScript وشرح الأكواد خطوة بخطوة.";
-    }
+return;
 
-    if (
-      lower.includes("أمن") ||
-      lower.includes("سيبراني") ||
-      lower.includes("cyber")
-    ) {
-      return "🛡️ يمكنني شرح مفاهيم الأمن السيبراني، حماية المواقع، اختبار الأمان بشكل قانوني، وأساسيات الشبكات.";
-    }
+}
 
-    if (
-      lower.includes("ذكاء اصطناعي") ||
-      lower.includes("ai")
-    ) {
-      return "🧠 الذكاء الاصطناعي هو مجال يتيح للبرامج تنفيذ مهام تتطلب عادةً قدرًا من الذكاء البشري، مثل فهم اللغة وتحليل البيانات وتوليد النصوص.";
-    }
 
-    if (
-      lower.includes("كود")
-    ) {
-      return "💻 أرسل لي الكود أو أخبرني بما تريد بناءه، وسأساعدك في تصميمه وشرحه.";
-    }
+let users=JSON.parse(localStorage.getItem("users") || "{}");
 
-    return "🤖 وصلتني رسالتك:\n\n\"" +
-      text +
-      "\"\n\nهذه نسخة تجريبية من CyberLab AI. يمكننا الآن ربطها بواجهة API للذكاء الاصطناعي حتى تحصل على إجابات حقيقية ومتقدمة.";
-  }
 
-  function sendMessage() {
+if(users[user]){
 
-    const text = input.value.trim();
+alert("اسم المستخدم موجود مسبقاً");
 
-    if (!text) return;
+return;
 
-    addMessage(text, "user");
+}
 
-    input.value = "";
 
-    typing.style.display = "block";
 
-    messages.scrollTop = messages.scrollHeight;
+users[user]={
 
-    setTimeout(() => {
+password:pass,
+balance:10,
+history:"",
+lastRequest:0
 
-      typing.style.display = "none";
+};
 
-      const response = getAIResponse(text);
 
-      addMessage(response, "ai");
+localStorage.setItem("users",JSON.stringify(users));
 
-    }, 700);
-  }
 
-  function useTool(text) {
+alert("تم إنشاء الحساب بنجاح");
 
-    input.value = text;
+}
 
-    input.focus();
 
-    document
-      .getElementById("chat")
-      .scrollIntoView({
-        behavior: "smooth"
-      });
-  }
 
-  sendBtn.addEventListener("click", sendMessage);
 
-  input.addEventListener("keydown", function(event) {
+// تسجيل الدخول
 
-    if (event.key === "Enter" && !event.shiftKey) {
+function login(){
 
-      event.preventDefault();
 
-      sendMessage();
+let user=document.getElementById("username").value;
 
-    }
+let pass=document.getElementById("password").value;
 
-  });
+
+let users=JSON.parse(localStorage.getItem("users") || "{}");
+
+
+if(users[user] && users[user].password==pass){
+
+
+currentUser=user;
+
+
+balance=users[user].balance;
+
+
+document.getElementById("balance").innerHTML=balance;
+
+
+document.getElementById("history").innerHTML=
+users[user].history || "لا يوجد طلبات";
+
+
+document.getElementById("loginPage").style.display="none";
+
+
+}
+
+else{
+
+alert("بيانات الدخول غير صحيحة");
+
+}
+
+
+}
+
+
+
+
+
+// اختيار التطبيق
+
+function chooseService(s){
+
+service=s;
+
+document.getElementById("serviceBox").style.display="none";
+
+document.getElementById("countryBox").style.display="block";
+
+}
+
+
+
+
+// توليد رقم تجريبي
+
+function randomNumber(country){
+
+
+let numbers={
+
+
+"🇺🇸 أمريكا":"+1 "+Math.floor(1000000000+Math.random()*9000000000),
+
+
+"🇷🇺 روسيا":"+7 "+Math.floor(1000000000+Math.random()*9000000000),
+
+
+"🇩🇪 ألمانيا":"+49 "+Math.floor(100000000+Math.random()*900000000),
+
+
+"🇸🇦 السعودية":"+966 5"+Math.floor(10000000+Math.random()*90000000),
+
+
+"🇯🇴 الأردن":"+962 7"+Math.floor(10000000+Math.random()*90000000),
+
+
+"🇾🇪 اليمن":"+967 "+Math.floor(100000000+Math.random()*900000000),
+
+
+"🇨🇳 الصين":"+86 "+Math.floor(10000000000+Math.random()*90000000000),
+
+
+"🇮🇳 الهند":"+91 "+Math.floor(1000000000+Math.random()*9000000000),
+
+
+"🇵🇰 باكستان":"+92 3"+Math.floor(10000000+Math.random()*90000000)
+
+
+};
+
+
+return numbers[country];
+
+
+}
+
+
+
+
+// إنشاء طلب رقم
+
+function createNumber(country){
+
+
+let users=JSON.parse(localStorage.getItem("users") || "{}");
+
+
+let last=users[currentUser].lastRequest || 0;
+
+
+let diff=Date.now()-last;
+
+
+
+if(diff < 86400000){
+
+
+let hours=Math.ceil((86400000-diff)/3600000);
+
+
+alert("يمكنك طلب رقم جديد بعد "+hours+" ساعة");
+
+
+return;
+
+}
+
+
+
+currentNumber=randomNumber(country);
+
+
+
+document.getElementById("result").innerHTML=`
+
+<div class="card">
+
+<h2>${service}</h2>
+
+<h3>${country}</h3>
+
+
+<div class="number">
+
+${currentNumber}
+
+</div>
+
+
+<button onclick="requestCode()">
+
+📩 طلب الكود
+
+</button>
+
+
+</div>
+
+`;
+
+}
+
+
+
+
+
+// طلب الكود
+
+function requestCode(){
+
+
+let time=60;
+
+
+
+document.getElementById("result").innerHTML+=`
+
+<div class="card">
+
+<h2>انتظر وصول الكود</h2>
+
+<div class="timer" id="timer">
+
+60
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+let timer=setInterval(()=>{
+
+
+time--;
+
+
+document.getElementById("timer").innerHTML=time;
+
+
+
+if(time<=0){
+
+
+clearInterval(timer);
+
+
+
+let code=Math.floor(100000+Math.random()*900000);
+
+
+
+document.getElementById("result").innerHTML+=`
+
+<div class="card">
+
+<h2>✅ الكود التجريبي</h2>
+
+<div class="code">
+
+${code}
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+saveData(code);
+
+
+
+}
+
+
+},1000);
+
+
+}
+
+
+
+
+// حفظ بيانات المستخدم
+
+function saveData(code){
+
+
+let users=JSON.parse(localStorage.getItem("users") || "{}");
+
+
+balance--;
+
+
+users[currentUser].balance=balance;
+
+
+users[currentUser].lastRequest=Date.now();
+
+
+
+users[currentUser].history += `
+
+<div class="history">
+
+الخدمة: ${service}<br>
+
+الرقم: ${currentNumber}<br>
+
+الكود: ${code}
+
+</div>
+
+`;
+
+
+
+localStorage.setItem("users",JSON.stringify(users));
+
+
+document.getElementById("balance").innerHTML=balance;
+
+
+document.getElementById("history").innerHTML=
+users[currentUser].history;
+
+
+}
+
+
 
 </script>
 
+
 </body>
+
 </html>

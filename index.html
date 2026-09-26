@@ -1,784 +1,631 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SyriaNumbers</title>
+<title>موسوعة العلوم السياسية</title>
 
 <style>
-
 *{
-box-sizing:border-box;
-font-family:Arial,Tajawal,sans-serif;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-margin:0;
-background:#050505;
-color:white;
-min-height:100vh;
+    font-family:Tahoma,Arial,sans-serif;
+    background:#070707;
+    color:#eee;
+    line-height:1.8;
 }
-
-
-.login{
-
-position:fixed;
-width:100%;
-height:100vh;
-background:#050505;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-z-index:9999;
-
-}
-
-
-.login h1{
-
-font-size:45px;
-color:#00e5ff;
-text-shadow:0 0 25px #00e5ff;
-
-}
-
-
-.login input{
-
-width:300px;
-padding:15px;
-margin:8px;
-background:#111;
-border:1px solid #333;
-border-radius:15px;
-color:white;
-font-size:17px;
-
-}
-
-
-button{
-
-width:100%;
-padding:16px;
-border-radius:18px;
-border:1px solid #333;
-background:#181818;
-color:white;
-font-size:17px;
-cursor:pointer;
-transition:.3s;
-
-}
-
-
-button:hover{
-
-background:#00e5ff;
-color:black;
-
-}
-
-
-.login button{
-
-width:300px;
-margin-top:10px;
-background:#00e5ff;
-color:black;
-
-}
-
-
 
 header{
-
-padding:35px;
-text-align:center;
-background:linear-gradient(135deg,#000,#111,#000);
-
+    background:linear-gradient(135deg,#0b0b0b,#151515);
+    border-bottom:1px solid #333;
+    padding:25px 18px;
+    text-align:center;
 }
-
 
 .logo{
-
-font-size:42px;
-color:#00e5ff;
-text-shadow:0 0 20px #00e5ff;
-
+    font-size:30px;
+    font-weight:bold;
+    color:#d4af37;
+    margin-bottom:5px;
 }
-
 
 .subtitle{
-
-color:#aaa;
-
+    color:#aaa;
+    font-size:14px;
 }
 
+nav{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    background:#111;
+    border:1px solid #292929;
+    padding:8px 14px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#d4af37;
+    color:#000;
+}
+
+.hero{
+    min-height:390px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:50px 20px;
+    background:
+    radial-gradient(circle at center,#25200f 0%,#0a0a0a 45%,#050505 100%);
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:42px;
+    color:#d4af37;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#bbb;
+    font-size:18px;
+}
 
 .container{
-
-max-width:900px;
-margin:auto;
-padding:20px;
-
+    width:92%;
+    max-width:1100px;
+    margin:auto;
 }
 
-
-.box{
-
-background:#101010;
-border:1px solid #222;
-border-radius:25px;
-padding:25px;
-margin-bottom:20px;
-
+.section-title{
+    text-align:center;
+    margin:45px 0 25px;
 }
 
-
-h2{
-
-text-align:center;
-color:#00e5ff;
-
+.section-title h2{
+    color:#d4af37;
+    font-size:28px;
 }
 
-
-.grid{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-
+.section-title p{
+    color:#888;
 }
 
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
 
 .card{
-
-background:#080808;
-border:1px solid #333;
-border-radius:25px;
-padding:25px;
-text-align:center;
-
+    background:#111;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:22px;
+    transition:.3s;
 }
 
-
-.number{
-
-font-size:32px;
-color:#00ff88;
-direction:ltr;
-
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#d4af37;
 }
 
-
-.code{
-
-font-size:35px;
-color:#ffd700;
-
+.icon{
+    font-size:35px;
+    margin-bottom:10px;
 }
 
-
-.balance{
-
-text-align:center;
-color:#00ff88;
-font-size:22px;
-
+.card h3{
+    color:#d4af37;
+    margin-bottom:8px;
 }
 
-
-.history{
-
-background:#151515;
-padding:15px;
-border-radius:15px;
-margin:10px;
-
+.card p{
+    color:#aaa;
+    font-size:14px;
 }
 
-
-.timer{
-
-font-size:40px;
-color:#ffcc00;
-
+.article{
+    background:#101010;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:15px;
 }
 
+.article h3{
+    color:#fff;
+    margin-bottom:8px;
+}
+
+.article span{
+    color:#d4af37;
+    font-size:13px;
+}
+
+.article p{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.search-box{
+    margin:30px auto;
+    max-width:650px;
+    display:flex;
+    gap:8px;
+}
+
+.search-box input{
+    flex:1;
+    padding:14px;
+    background:#111;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:9px;
+    outline:none;
+}
+
+.search-box button{
+    background:#d4af37;
+    color:#000;
+    border:0;
+    padding:0 20px;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
+    margin-top:25px;
+}
+
+.stat{
+    text-align:center;
+    background:#111;
+    border:1px solid #292929;
+    padding:20px;
+    border-radius:12px;
+}
+
+.stat strong{
+    display:block;
+    color:#d4af37;
+    font-size:30px;
+}
+
+.stat span{
+    color:#aaa;
+}
+
+footer{
+    margin-top:60px;
+    padding:30px 15px;
+    text-align:center;
+    background:#0d0d0d;
+    border-top:1px solid #292929;
+    color:#777;
+}
+
+footer b{
+    color:#d4af37;
+}
 
 @media(max-width:600px){
 
-.grid{
+    .logo{
+        font-size:24px;
+    }
 
-grid-template-columns:1fr;
+    .hero h1{
+        font-size:30px;
+    }
 
+    .hero p{
+        font-size:15px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:7px 10px;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    .search-box button{
+        padding:12px;
+    }
 }
-
-.logo{
-
-font-size:32px;
-
-}
-
-}
-
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<div class="login" id="loginPage">
-
-<h1>
-📱 SyriaNumbers
-</h1>
-
-
-<input id="username" placeholder="اسم المستخدم">
-
-
-<input id="password" type="password" placeholder="كلمة المرور">
-
-
-<button onclick="register()">
-إنشاء حساب
-</button>
-
-
-<button onclick="login()">
-دخول
-</button>
-
-
-</div>
-
-
 <header>
 
-<div class="logo">
-📱 SyriaNumbers
-</div>
+    <div class="logo">🏛️ موسوعة العلوم السياسية</div>
 
-<div class="subtitle">
-منصة الأرقام التجريبية الذكية
-</div>
+    <div class="subtitle">
+        المعرفة السياسية • الفكر • العلاقات الدولية • التاريخ
+    </div>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#fields">المجالات</a>
+        <a href="#articles">المقالات</a>
+        <a href="#stats">إحصائيات</a>
+        <a href="#about">عن الموقع</a>
+    </nav>
 
 </header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>افهم السياسة من منظور علمي</h1>
+
+        <p>
+            منصة معرفية تهتم بدراسة العلوم السياسية،
+            الأنظمة السياسية، العلاقات الدولية، الفكر السياسي
+            والتاريخ السياسي.
+        </p>
+
+    </div>
+
+</section>
+
+
 <div class="container">
 
+    <div class="search-box">
 
-<div class="box" id="serviceBox">
+        <input
+            type="text"
+            id="search"
+            placeholder="ابحث في المقالات والمجالات..."
+            onkeyup="searchArticles()"
+        >
 
-<h2>اختر التطبيق</h2>
+        <button onclick="searchArticles()">
+            بحث
+        </button>
 
-<div class="grid">
-
-<button onclick="chooseService('واتساب')">
-📱 واتساب
-</button>
-
-
-<button onclick="chooseService('تيليجرام')">
-✈️ تيليجرام
-</button>
-
-
-<button onclick="chooseService('فيسبوك')">
-📘 فيسبوك
-</button>
+    </div>
 
 
-<button onclick="chooseService('تويتر')">
-🐦 تويتر
-</button>
+    <section id="fields">
+
+        <div class="section-title">
+
+            <h2>مجالات العلوم السياسية</h2>
+
+            <p>
+                تعرف على أهم فروع وتخصصات العلوم السياسية
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">🏛️</div>
+
+                <h3>النظم السياسية</h3>
+
+                <p>
+                    دراسة مؤسسات الدولة وأنظمة الحكم
+                    وطريقة توزيع السلطة داخل المجتمع.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🌍</div>
+
+                <h3>العلاقات الدولية</h3>
+
+                <p>
+                    دراسة العلاقات بين الدول والمنظمات
+                    الدولية والقضايا العالمية.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">📚</div>
+
+                <h3>الفكر السياسي</h3>
+
+                <p>
+                    دراسة الأفكار والنظريات السياسية
+                    وتطورها عبر التاريخ.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">⚖️</div>
+
+                <h3>القانون والدولة</h3>
+
+                <p>
+                    التعرف على مفهوم الدولة والدستور
+                    والقوانين والمؤسسات السياسية.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🗳️</div>
+
+                <h3>الانتخابات</h3>
+
+                <p>
+                    دراسة الأنظمة الانتخابية والمشاركة
+                    السياسية والأحزاب.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🕊️</div>
+
+                <h3>السلام والنزاعات</h3>
+
+                <p>
+                    دراسة أسباب النزاعات وطرق إدارة
+                    الأزمات وبناء السلام.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="articles">
+
+        <div class="section-title">
+
+            <h2>مقالات سياسية</h2>
+
+            <p>
+                مقالات تعليمية وتعريفية في العلوم السياسية
+            </p>
+
+        </div>
+
+
+        <div id="articleList">
+
+            <div class="article">
+
+                <span>العلوم السياسية</span>
+
+                <h3>
+                    ما هي العلوم السياسية؟
+                </h3>
+
+                <p>
+                    العلوم السياسية هي مجال أكاديمي يدرس
+                    السلطة والحكم والمؤسسات السياسية
+                    والعلاقات بين الفاعلين السياسيين.
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span>العلاقات الدولية</span>
+
+                <h3>
+                    مفهوم العلاقات الدولية
+                </h3>
+
+                <p>
+                    تهتم العلاقات الدولية بدراسة التفاعلات
+                    بين الدول والمنظمات والجهات الفاعلة
+                    على المستوى الدولي.
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span>الفكر السياسي</span>
+
+                <h3>
+                    تطور الفكر السياسي
+                </h3>
+
+                <p>
+                    مر الفكر السياسي بمراحل متعددة تناولت
+                    مفاهيم مثل الدولة والعدالة والحرية
+                    والسلطة والقانون.
+                </p>
+
+            </div>
+
+
+            <div class="article">
+
+                <span>النظم السياسية</span>
+
+                <h3>
+                    ما هو النظام السياسي؟
+                </h3>
+
+                <p>
+                    النظام السياسي هو مجموعة المؤسسات
+                    والقواعد والإجراءات التي تنظم ممارسة
+                    السلطة داخل الدولة.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="stats">
+
+        <div class="section-title">
+
+            <h2>الموسوعة بالأرقام</h2>
+
+            <p>
+                أقسام معرفية قابلة للتوسع
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>6</strong>
+
+                <span>مجالات رئيسية</span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>4</strong>
+
+                <span>مقالات تعليمية</span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>∞</strong>
+
+                <span>معرفة سياسية</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <h2>عن الموقع</h2>
+
+            <p>
+                منصة تعليمية للمهتمين بالعلوم السياسية
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <p>
+                يهدف الموقع إلى تقديم محتوى تعليمي مبسط
+                حول العلوم السياسية ومفاهيمها الأساسية،
+                مع إمكانية إضافة المقالات والأبحاث والمصادر
+                التعليمية مستقبلًا.
+            </p>
+
+        </div>
+
+    </section>
 
 </div>
 
-</div>
+
+<footer>
+
+    <p>
+        © 2026 <b>موسوعة العلوم السياسية</b>
+    </p>
+
+    <p>
+        منصة معرفية تعليمية
+    </p>
+
+</footer>
 
 
-
-
-<div class="box" id="countryBox" style="display:none">
-
-<h2>اختر الدولة</h2>
-
-
-<div class="grid">
-
-
-<button onclick="createNumber('🇺🇸 أمريكا')">
-🇺🇸 أمريكا
-</button>
-
-
-<button onclick="createNumber('🇷🇺 روسيا')">
-🇷🇺 روسيا
-</button>
-
-
-<button onclick="createNumber('🇩🇪 ألمانيا')">
-🇩🇪 ألمانيا
-</button>
-
-
-<button onclick="createNumber('🇸🇦 السعودية')">
-🇸🇦 السعودية
-</button>
-
-
-<button onclick="createNumber('🇯🇴 الأردن')">
-🇯🇴 الأردن
-</button>
-
-
-<button onclick="createNumber('🇾🇪 اليمن')">
-🇾🇪 اليمن
-</button>
-
-
-<button onclick="createNumber('🇨🇳 الصين')">
-🇨🇳 الصين
-</button>
-
-
-<button onclick="createNumber('🇮🇳 الهند')">
-🇮🇳 الهند
-</button>
-
-
-<button onclick="createNumber('🇵🇰 باكستان')">
-🇵🇰 باكستان
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-<div class="box">
-
-<div class="balance">
-
-💰 الرصيد:
-<span id="balance">
-10
-</span>
-
-</div>
-
-</div>
-
-
-
-
-<div id="result"></div>
-
-
-
-
-
-<div class="box">
-
-<h2>
-📋 سجل الطلبات
-</h2>
-
-
-<div id="history">
-
-لا يوجد طلبات
-
-</div>
-
-
-</div>
-
-
-</div>
 <script>
 
-let currentUser="";
-let service="";
-let currentNumber="";
-let balance=10;
+function searchArticles(){
 
+    let input =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
 
+    let articles =
+        document.querySelectorAll(".article");
 
-// إنشاء حساب
+    articles.forEach(function(article){
 
-function register(){
+        let text =
+            article.innerText.toLowerCase();
 
+        if(text.includes(input)){
 
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
+            article.style.display = "block";
 
+        }else{
 
-if(user=="" || pass==""){
+            article.style.display = "none";
 
-alert("أدخل اسم المستخدم وكلمة المرور");
+        }
 
-return;
-
-}
-
-
-let users=JSON.parse(localStorage.getItem("users") || "{}");
-
-
-if(users[user]){
-
-alert("اسم المستخدم موجود مسبقاً");
-
-return;
+    });
 
 }
-
-
-
-users[user]={
-
-password:pass,
-balance:10,
-history:"",
-lastRequest:0
-
-};
-
-
-localStorage.setItem("users",JSON.stringify(users));
-
-
-alert("تم إنشاء الحساب بنجاح");
-
-}
-
-
-
-
-// تسجيل الدخول
-
-function login(){
-
-
-let user=document.getElementById("username").value;
-
-let pass=document.getElementById("password").value;
-
-
-let users=JSON.parse(localStorage.getItem("users") || "{}");
-
-
-if(users[user] && users[user].password==pass){
-
-
-currentUser=user;
-
-
-balance=users[user].balance;
-
-
-document.getElementById("balance").innerHTML=balance;
-
-
-document.getElementById("history").innerHTML=
-users[user].history || "لا يوجد طلبات";
-
-
-document.getElementById("loginPage").style.display="none";
-
-
-}
-
-else{
-
-alert("بيانات الدخول غير صحيحة");
-
-}
-
-
-}
-
-
-
-
-
-// اختيار التطبيق
-
-function chooseService(s){
-
-service=s;
-
-document.getElementById("serviceBox").style.display="none";
-
-document.getElementById("countryBox").style.display="block";
-
-}
-
-
-
-
-// توليد رقم تجريبي
-
-function randomNumber(country){
-
-
-let numbers={
-
-
-"🇺🇸 أمريكا":"+1 "+Math.floor(1000000000+Math.random()*9000000000),
-
-
-"🇷🇺 روسيا":"+7 "+Math.floor(1000000000+Math.random()*9000000000),
-
-
-"🇩🇪 ألمانيا":"+49 "+Math.floor(100000000+Math.random()*900000000),
-
-
-"🇸🇦 السعودية":"+966 5"+Math.floor(10000000+Math.random()*90000000),
-
-
-"🇯🇴 الأردن":"+962 7"+Math.floor(10000000+Math.random()*90000000),
-
-
-"🇾🇪 اليمن":"+967 "+Math.floor(100000000+Math.random()*900000000),
-
-
-"🇨🇳 الصين":"+86 "+Math.floor(10000000000+Math.random()*90000000000),
-
-
-"🇮🇳 الهند":"+91 "+Math.floor(1000000000+Math.random()*9000000000),
-
-
-"🇵🇰 باكستان":"+92 3"+Math.floor(10000000+Math.random()*90000000)
-
-
-};
-
-
-return numbers[country];
-
-
-}
-
-
-
-
-// إنشاء طلب رقم
-
-function createNumber(country){
-
-
-let users=JSON.parse(localStorage.getItem("users") || "{}");
-
-
-let last=users[currentUser].lastRequest || 0;
-
-
-let diff=Date.now()-last;
-
-
-
-if(diff < 86400000){
-
-
-let hours=Math.ceil((86400000-diff)/3600000);
-
-
-alert("يمكنك طلب رقم جديد بعد "+hours+" ساعة");
-
-
-return;
-
-}
-
-
-
-currentNumber=randomNumber(country);
-
-
-
-document.getElementById("result").innerHTML=`
-
-<div class="card">
-
-<h2>${service}</h2>
-
-<h3>${country}</h3>
-
-
-<div class="number">
-
-${currentNumber}
-
-</div>
-
-
-<button onclick="requestCode()">
-
-📩 طلب الكود
-
-</button>
-
-
-</div>
-
-`;
-
-}
-
-
-
-
-
-// طلب الكود
-
-function requestCode(){
-
-
-let time=60;
-
-
-
-document.getElementById("result").innerHTML+=`
-
-<div class="card">
-
-<h2>انتظر وصول الكود</h2>
-
-<div class="timer" id="timer">
-
-60
-
-</div>
-
-
-</div>
-
-`;
-
-
-
-let timer=setInterval(()=>{
-
-
-time--;
-
-
-document.getElementById("timer").innerHTML=time;
-
-
-
-if(time<=0){
-
-
-clearInterval(timer);
-
-
-
-let code=Math.floor(100000+Math.random()*900000);
-
-
-
-document.getElementById("result").innerHTML+=`
-
-<div class="card">
-
-<h2>✅ الكود التجريبي</h2>
-
-<div class="code">
-
-${code}
-
-</div>
-
-
-</div>
-
-`;
-
-
-
-saveData(code);
-
-
-
-}
-
-
-},1000);
-
-
-}
-
-
-
-
-// حفظ بيانات المستخدم
-
-function saveData(code){
-
-
-let users=JSON.parse(localStorage.getItem("users") || "{}");
-
-
-balance--;
-
-
-users[currentUser].balance=balance;
-
-
-users[currentUser].lastRequest=Date.now();
-
-
-
-users[currentUser].history += `
-
-<div class="history">
-
-الخدمة: ${service}<br>
-
-الرقم: ${currentNumber}<br>
-
-الكود: ${code}
-
-</div>
-
-`;
-
-
-
-localStorage.setItem("users",JSON.stringify(users));
-
-
-document.getElementById("balance").innerHTML=balance;
-
-
-document.getElementById("history").innerHTML=
-users[currentUser].history;
-
-
-}
-
-
 
 </script>
 
-
 </body>
-
 </html>

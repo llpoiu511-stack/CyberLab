@@ -1,329 +1,193 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>موسوعة العلوم السياسية</title>
+    <title>مؤسسة أمجاد الإعلامية</title>
 
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    font-family:Tahoma,Arial,sans-serif;
-    background:#070707;
-    color:#eee;
-    line-height:1.8;
-}
+        body {
+            font-family: Arial, Tahoma, sans-serif;
+            background: #080808;
+            color: white;
+        }
 
-header{
-    background:linear-gradient(135deg,#0b0b0b,#151515);
-    border-bottom:1px solid #333;
-    padding:25px 18px;
-    text-align:center;
-}
+        /* الواجهة الرئيسية */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
 
-.logo{
-    font-size:30px;
-    font-weight:bold;
-    color:#d4af37;
-    margin-bottom:5px;
-}
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.85)
+                ),
+                url("images/background.jpg") center/cover no-repeat;
+        }
 
-.subtitle{
-    color:#aaa;
-    font-size:14px;
-}
+        .hero-content {
+            max-width: 800px;
+            padding: 30px;
+        }
 
-nav{
-    margin-top:20px;
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    flex-wrap:wrap;
-}
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
 
-nav a{
-    color:#ddd;
-    text-decoration:none;
-    background:#111;
-    border:1px solid #292929;
-    padding:8px 14px;
-    border-radius:8px;
-    transition:.3s;
-}
+        .hero p {
+            color: #cccccc;
+            font-size: 20px;
+            margin-bottom: 35px;
+        }
 
-nav a:hover{
-    background:#d4af37;
-    color:#000;
-}
+        .button {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #b89445;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
 
-.hero{
-    min-height:390px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:50px 20px;
-    background:
-    radial-gradient(circle at center,#25200f 0%,#0a0a0a 45%,#050505 100%);
-}
+        .button:hover {
+            background: #d2ad58;
+            transform: translateY(-2px);
+        }
 
-.hero-content{
-    max-width:800px;
-}
+        /* قسم الإصدارات */
+        .releases {
+            padding: 70px 7%;
+            background: #101010;
+        }
 
-.hero h1{
-    font-size:42px;
-    color:#d4af37;
-    margin-bottom:15px;
-}
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
 
-.hero p{
-    color:#bbb;
-    font-size:18px;
-}
+        .section-title h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
 
-.container{
-    width:92%;
-    max-width:1100px;
-    margin:auto;
-}
+        .section-title p {
+            color: #999;
+        }
 
-.section-title{
-    text-align:center;
-    margin:45px 0 25px;
-}
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
 
-.section-title h2{
-    color:#d4af37;
-    font-size:28px;
-}
+        .card {
+            background: #181818;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
 
-.section-title p{
-    color:#888;
-}
+        .card:hover {
+            transform: translateY(-7px);
+        }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
-}
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
 
-.card{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:22px;
-    transition:.3s;
-}
+        .card-content {
+            padding: 20px;
+        }
 
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#d4af37;
-}
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
 
-.icon{
-    font-size:35px;
-    margin-bottom:10px;
-}
+        .card p {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 14px;
+        }
 
-.card h3{
-    color:#d4af37;
-    margin-bottom:8px;
-}
+        .watch {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 20px;
+            background: #b89445;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-.card p{
-    color:#aaa;
-    font-size:14px;
-}
+        /* الفوتر */
+        footer {
+            padding: 30px;
+            text-align: center;
+            background: #050505;
+            color: #777;
+        }
 
-.article{
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:15px;
-}
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 36px;
+            }
 
-.article h3{
-    color:#fff;
-    margin-bottom:8px;
-}
-
-.article span{
-    color:#d4af37;
-    font-size:13px;
-}
-
-.article p{
-    color:#aaa;
-    margin-top:8px;
-}
-
-.search-box{
-    margin:30px auto;
-    max-width:650px;
-    display:flex;
-    gap:8px;
-}
-
-.search-box input{
-    flex:1;
-    padding:14px;
-    background:#111;
-    border:1px solid #333;
-    color:#fff;
-    border-radius:9px;
-    outline:none;
-}
-
-.search-box button{
-    background:#d4af37;
-    color:#000;
-    border:0;
-    padding:0 20px;
-    border-radius:9px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:15px;
-    margin-top:25px;
-}
-
-.stat{
-    text-align:center;
-    background:#111;
-    border:1px solid #292929;
-    padding:20px;
-    border-radius:12px;
-}
-
-.stat strong{
-    display:block;
-    color:#d4af37;
-    font-size:30px;
-}
-
-.stat span{
-    color:#aaa;
-}
-
-footer{
-    margin-top:60px;
-    padding:30px 15px;
-    text-align:center;
-    background:#0d0d0d;
-    border-top:1px solid #292929;
-    color:#777;
-}
-
-footer b{
-    color:#d4af37;
-}
-
-@media(max-width:600px){
-
-    .logo{
-        font-size:24px;
-    }
-
-    .hero h1{
-        font-size:30px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    nav a{
-        font-size:13px;
-        padding:7px 10px;
-    }
-
-    .search-box{
-        flex-direction:column;
-    }
-
-    .search-box button{
-        padding:12px;
-    }
-}
-</style>
+            .hero p {
+                font-size: 17px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
+    <!-- الواجهة الأولى -->
+    <section class="hero">
 
-    <div class="logo">🏛️ موسوعة العلوم السياسية</div>
+        <div class="hero-content">
 
-    <div class="subtitle">
-        المعرفة السياسية • الفكر • العلاقات الدولية • التاريخ
-    </div>
+            <h1>مؤسسة أمجاد الإعلامية</h1>
 
-    <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#fields">المجالات</a>
-        <a href="#articles">المقالات</a>
-        <a href="#stats">إحصائيات</a>
-        <a href="#about">عن الموقع</a>
-    </nav>
+            <p>
+                للإنتاج والإصدارات المرئية
+            </p>
 
-</header>
+            <a href="#releases" class="button">
+                تصفح الإصدارات
+            </a>
 
+        </div>
 
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <h1>افهم السياسة من منظور علمي</h1>
-
-        <p>
-            منصة معرفية تهتم بدراسة العلوم السياسية،
-            الأنظمة السياسية، العلاقات الدولية، الفكر السياسي
-            والتاريخ السياسي.
-        </p>
-
-    </div>
-
-</section>
+    </section>
 
 
-<div class="container">
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="search"
-            placeholder="ابحث في المقالات والمجالات..."
-            onkeyup="searchArticles()"
-        >
-
-        <button onclick="searchArticles()">
-            بحث
-        </button>
-
-    </div>
-
-
-    <section id="fields">
+    <!-- الإصدارات -->
+    <section class="releases" id="releases">
 
         <div class="section-title">
 
-            <h2>مجالات العلوم السياسية</h2>
+            <h2>الإصدارات المرئية</h2>
 
             <p>
-                تعرف على أهم فروع وتخصصات العلوم السياسية
+                أحدث الإصدارات والأعمال المرئية
             </p>
 
         </div>
@@ -331,86 +195,84 @@ footer b{
 
         <div class="cards">
 
+            <!-- الإصدار الأول -->
             <div class="card">
 
-                <div class="icon">🏛️</div>
+                <img src="images/release1.jpg"
+                     alt="الإصدار الأول">
 
-                <h3>النظم السياسية</h3>
+                <div class="card-content">
 
-                <p>
-                    دراسة مؤسسات الدولة وأنظمة الحكم
-                    وطريقة توزيع السلطة داخل المجتمع.
-                </p>
+                    <h3>
+                        الإصدار الأول
+                    </h3>
+
+                    <p>
+                        أضف هنا وصف الإصدار المرئي
+                        والمعلومات الخاصة به.
+                    </p>
+
+                    <!-- غيّر الرابط إلى صفحة الإصدار -->
+                    <a href="watch.html"
+                       class="watch">
+                        مشاهدة الإصدار
+                    </a>
+
+                </div>
 
             </div>
 
 
+            <!-- الإصدار الثاني -->
             <div class="card">
 
-                <div class="icon">🌍</div>
+                <img src="images/release2.jpg"
+                     alt="الإصدار الثاني">
 
-                <h3>العلاقات الدولية</h3>
+                <div class="card-content">
 
-                <p>
-                    دراسة العلاقات بين الدول والمنظمات
-                    الدولية والقضايا العالمية.
-                </p>
+                    <h3>
+                        الإصدار الثاني
+                    </h3>
+
+                    <p>
+                        أضف هنا وصف الإصدار المرئي
+                        والمعلومات الخاصة به.
+                    </p>
+
+                    <a href="watch.html"
+                       class="watch">
+                        مشاهدة الإصدار
+                    </a>
+
+                </div>
 
             </div>
 
 
+            <!-- الإصدار الثالث -->
             <div class="card">
 
-                <div class="icon">📚</div>
+                <img src="images/release3.jpg"
+                     alt="الإصدار الثالث">
 
-                <h3>الفكر السياسي</h3>
+                <div class="card-content">
 
-                <p>
-                    دراسة الأفكار والنظريات السياسية
-                    وتطورها عبر التاريخ.
-                </p>
+                    <h3>
+                        الإصدار الثالث
+                    </h3>
 
-            </div>
+                    <p>
+                        أضف هنا وصف الإصدار المرئي
+                        والمعلومات الخاصة به.
+                    </p>
 
+                    <a href="watch.html"
+                       class="watch">
+                        مشاهدة الإصدار
+                    </a>
 
-            <div class="card">
-
-                <div class="icon">⚖️</div>
-
-                <h3>القانون والدولة</h3>
-
-                <p>
-                    التعرف على مفهوم الدولة والدستور
-                    والقوانين والمؤسسات السياسية.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">🗳️</div>
-
-                <h3>الانتخابات</h3>
-
-                <p>
-                    دراسة الأنظمة الانتخابية والمشاركة
-                    السياسية والأحزاب.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">🕊️</div>
-
-                <h3>السلام والنزاعات</h3>
-
-                <p>
-                    دراسة أسباب النزاعات وطرق إدارة
-                    الأزمات وبناء السلام.
-                </p>
+                </div>
 
             </div>
 
@@ -419,213 +281,9 @@ footer b{
     </section>
 
 
-    <section id="articles">
-
-        <div class="section-title">
-
-            <h2>مقالات سياسية</h2>
-
-            <p>
-                مقالات تعليمية وتعريفية في العلوم السياسية
-            </p>
-
-        </div>
-
-
-        <div id="articleList">
-
-            <div class="article">
-
-                <span>العلوم السياسية</span>
-
-                <h3>
-                    ما هي العلوم السياسية؟
-                </h3>
-
-                <p>
-                    العلوم السياسية هي مجال أكاديمي يدرس
-                    السلطة والحكم والمؤسسات السياسية
-                    والعلاقات بين الفاعلين السياسيين.
-                </p>
-
-            </div>
-
-
-            <div class="article">
-
-                <span>العلاقات الدولية</span>
-
-                <h3>
-                    مفهوم العلاقات الدولية
-                </h3>
-
-                <p>
-                    تهتم العلاقات الدولية بدراسة التفاعلات
-                    بين الدول والمنظمات والجهات الفاعلة
-                    على المستوى الدولي.
-                </p>
-
-            </div>
-
-
-            <div class="article">
-
-                <span>الفكر السياسي</span>
-
-                <h3>
-                    تطور الفكر السياسي
-                </h3>
-
-                <p>
-                    مر الفكر السياسي بمراحل متعددة تناولت
-                    مفاهيم مثل الدولة والعدالة والحرية
-                    والسلطة والقانون.
-                </p>
-
-            </div>
-
-
-            <div class="article">
-
-                <span>النظم السياسية</span>
-
-                <h3>
-                    ما هو النظام السياسي؟
-                </h3>
-
-                <p>
-                    النظام السياسي هو مجموعة المؤسسات
-                    والقواعد والإجراءات التي تنظم ممارسة
-                    السلطة داخل الدولة.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section id="stats">
-
-        <div class="section-title">
-
-            <h2>الموسوعة بالأرقام</h2>
-
-            <p>
-                أقسام معرفية قابلة للتوسع
-            </p>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
-
-                <strong>6</strong>
-
-                <span>مجالات رئيسية</span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>4</strong>
-
-                <span>مقالات تعليمية</span>
-
-            </div>
-
-
-            <div class="stat">
-
-                <strong>∞</strong>
-
-                <span>معرفة سياسية</span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section id="about">
-
-        <div class="section-title">
-
-            <h2>عن الموقع</h2>
-
-            <p>
-                منصة تعليمية للمهتمين بالعلوم السياسية
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <p>
-                يهدف الموقع إلى تقديم محتوى تعليمي مبسط
-                حول العلوم السياسية ومفاهيمها الأساسية،
-                مع إمكانية إضافة المقالات والأبحاث والمصادر
-                التعليمية مستقبلًا.
-            </p>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<footer>
-
-    <p>
-        © 2026 <b>موسوعة العلوم السياسية</b>
-    </p>
-
-    <p>
-        منصة معرفية تعليمية
-    </p>
-
-</footer>
-
-
-<script>
-
-function searchArticles(){
-
-    let input =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
-
-    let articles =
-        document.querySelectorAll(".article");
-
-    articles.forEach(function(article){
-
-        let text =
-            article.innerText.toLowerCase();
-
-        if(text.includes(input)){
-
-            article.style.display = "block";
-
-        }else{
-
-            article.style.display = "none";
-
-        }
-
-    });
-
-}
-
-</script>
+    <footer>
+        © 2026 مؤسسة أمجاد الإعلامية — جميع الحقوق محفوظة
+    </footer>
 
 </body>
 </html>

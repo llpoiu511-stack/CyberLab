@@ -1,289 +1,69 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>مؤسسة أمجاد الإعلامية</title>
+  <title>ساوي شاي</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, Tahoma, sans-serif;
-            background: #080808;
-            color: white;
-        }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
 
-        /* الواجهة الرئيسية */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+      background:
+        radial-gradient(circle at center, #3b281d 0%, #120c08 45%, #050403 100%);
 
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.65),
-                    rgba(0,0,0,0.85)
-                ),
-                url("images/background.jpg") center/cover no-repeat;
-        }
+      font-family: Arial, sans-serif;
+    }
 
-        .hero-content {
-            max-width: 800px;
-            padding: 30px;
-        }
+    h1 {
+      font-size: clamp(70px, 14vw, 180px);
+      font-weight: 900;
+      letter-spacing: -5px;
 
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
+      background: linear-gradient(
+        120deg,
+        #fff3d0,
+        #d9a65a,
+        #fff8df,
+        #a96f35,
+        #fff3d0
+      );
 
-        .hero p {
-            color: #cccccc;
-            font-size: 20px;
-            margin-bottom: 35px;
-        }
+      background-size: 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
 
-        .button {
-            display: inline-block;
-            padding: 14px 32px;
-            background: #b89445;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-            transition: 0.3s;
-        }
+      animation: shine 5s linear infinite;
 
-        .button:hover {
-            background: #d2ad58;
-            transform: translateY(-2px);
-        }
+      filter: drop-shadow(0 0 30px rgba(218, 166, 90, 0.25));
+    }
 
-        /* قسم الإصدارات */
-        .releases {
-            padding: 70px 7%;
-            background: #101010;
-        }
+    @keyframes shine {
+      0% {
+        background-position: 0% center;
+      }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .section-title p {
-            color: #999;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: #181818;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .card h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #aaa;
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        .watch {
-            display: inline-block;
-            margin-top: 18px;
-            padding: 10px 20px;
-            background: #b89445;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        /* الفوتر */
-        footer {
-            padding: 30px;
-            text-align: center;
-            background: #050505;
-            color: #777;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-        }
-    </style>
+      100% {
+        background-position: 300% center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- الواجهة الأولى -->
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <h1>مؤسسة أمجاد الإعلامية</h1>
-
-            <p>
-                للإنتاج والإصدارات المرئية
-            </p>
-
-            <a href="#releases" class="button">
-                تصفح الإصدارات
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- الإصدارات -->
-    <section class="releases" id="releases">
-
-        <div class="section-title">
-
-            <h2>الإصدارات المرئية</h2>
-
-            <p>
-                أحدث الإصدارات والأعمال المرئية
-            </p>
-
-        </div>
-
-
-        <div class="cards">
-
-            <!-- الإصدار الأول -->
-            <div class="card">
-
-                <img src="images/release1.jpg"
-                     alt="الإصدار الأول">
-
-                <div class="card-content">
-
-                    <h3>
-                        الإصدار الأول
-                    </h3>
-
-                    <p>
-                        أضف هنا وصف الإصدار المرئي
-                        والمعلومات الخاصة به.
-                    </p>
-
-                    <!-- غيّر الرابط إلى صفحة الإصدار -->
-                    <a href="watch.html"
-                       class="watch">
-                        مشاهدة الإصدار
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- الإصدار الثاني -->
-            <div class="card">
-
-                <img src="images/release2.jpg"
-                     alt="الإصدار الثاني">
-
-                <div class="card-content">
-
-                    <h3>
-                        الإصدار الثاني
-                    </h3>
-
-                    <p>
-                        أضف هنا وصف الإصدار المرئي
-                        والمعلومات الخاصة به.
-                    </p>
-
-                    <a href="watch.html"
-                       class="watch">
-                        مشاهدة الإصدار
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- الإصدار الثالث -->
-            <div class="card">
-
-                <img src="images/release3.jpg"
-                     alt="الإصدار الثالث">
-
-                <div class="card-content">
-
-                    <h3>
-                        الإصدار الثالث
-                    </h3>
-
-                    <p>
-                        أضف هنا وصف الإصدار المرئي
-                        والمعلومات الخاصة به.
-                    </p>
-
-                    <a href="watch.html"
-                       class="watch">
-                        مشاهدة الإصدار
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <footer>
-        © 2026 مؤسسة أمجاد الإعلامية — جميع الحقوق محفوظة
-    </footer>
+  <h1>ساوي شاي</h1>
 
 </body>
 </html>
